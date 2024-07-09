@@ -7,10 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import club.minemen.spigot.async.pathsearch.SearchHandler;
 import club.minemen.spigot.async.thread.CombatThread;
-import club.minemen.spigot.commands.MobAICommand;
-import club.minemen.spigot.commands.PingCommand;
-import club.minemen.spigot.commands.SetMaxSlotCommand;
-import club.minemen.spigot.commands.SpawnMobCommand;
+import club.minemen.spigot.commands.*;
 import club.minemen.spigot.config.ClubSpigotConfig;
 import club.minemen.spigot.protocol.MovementListener;
 import club.minemen.spigot.protocol.PacketListener;
@@ -73,7 +70,8 @@ public class ClubSpigot {
 			commandMap.register(pingCommand.getName(), "", pingCommand);
 		}
 
-
+		KnockbackCommand knockbackCommand = new KnockbackCommand("knockback");
+		commandMap.register(knockbackCommand.getName(), "", knockbackCommand);
 
 		// NachoSpigot commands
 		// TODO: add configuration for all of these
