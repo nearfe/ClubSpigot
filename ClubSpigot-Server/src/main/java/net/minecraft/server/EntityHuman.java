@@ -1049,8 +1049,7 @@ public abstract class EntityHuman extends EntityLiving {
 					int j = EnchantmentManager.getFireAspectEnchantmentLevel(this);
 
 					if (entity instanceof EntityLiving && j > 0 && !entity.isBurning()) {
-						// CraftBukkit start - Call a combust event when somebody hits with a fire
-						// enchanted item
+						// CraftBukkit start - Call a combust event when somebody hits with a fire enchanted item
 						EntityCombustByEntityEvent combustEvent = new EntityCombustByEntityEvent(this.getBukkitEntity(),
 								entity.getBukkitEntity(), 1);
 						org.bukkit.Bukkit.getPluginManager().callEvent(combustEvent);
@@ -1075,6 +1074,7 @@ public abstract class EntityHuman extends EntityLiving {
 								0.1,
 								MathHelper.cos(this.yaw * (float) Math.PI / 180.0f) * kb.getSprintMultiplier() * 0.5f
 						);
+						this.setSprinting(false);
 
 						if (entity instanceof EntityPlayer && entity.velocityChanged) {
 							EntityPlayer attackedPlayer = (EntityPlayer) entity;
@@ -1141,8 +1141,7 @@ public abstract class EntityHuman extends EntityLiving {
 						if (entity instanceof EntityLiving) {
 							this.a(StatisticList.w, Math.round(f * 10.0F));
 							if (j > 0) {
-								// CraftBukkit start - Call a combust event when somebody hits with a fire
-								// enchanted item
+								// CraftBukkit start - Call a combust event when somebody hits with a fire enchanted item
 								EntityCombustByEntityEvent combustEvent = new EntityCombustByEntityEvent(
 										this.getBukkitEntity(), entity.getBukkitEntity(), j * 4);
 								org.bukkit.Bukkit.getPluginManager().callEvent(combustEvent);
@@ -1154,8 +1153,7 @@ public abstract class EntityHuman extends EntityLiving {
 							}
 						}
 
-						this.applyExhaustion(world.spigotConfig.combatExhaustion); // Spigot - Change to use
-																					// configurable value
+						this.applyExhaustion(world.spigotConfig.combatExhaustion); // Spigot - Change to use configurable value
 					} else if (flag1) {
 						entity.extinguish();
 					}
@@ -1163,6 +1161,7 @@ public abstract class EntityHuman extends EntityLiving {
 			}
 		}
 	}
+
 
 	public void b(Entity entity) {
 	}
